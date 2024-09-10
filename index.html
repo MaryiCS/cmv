@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capturar más valor: Cuestionario interactivo y puntos clave</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 0 auto; padding: 20px; }
+        h1, h2 { color: #2c3e50; }
+        .question { margin-bottom: 20px; }
+        .options { margin-left: 20px; }
+        .option { margin-bottom: 10px; }
+        .key-points { background-color: #f0f0f0; padding: 15px; border-radius: 5px; }
+        .correct { color: green; font-weight: bold; }
+        .incorrect { color: red; text-decoration: line-through; }
+        button { margin-top: 10px; padding: 5px 10px; background-color: #3498db; color: white; border: none; border-radius: 3px; cursor: pointer; }
+        button:hover { background-color: #2980b9; }
+    </style>
+</head>
+<body>
+    <h1>Capturar más valor: Cuestionario interactivo y puntos clave</h1>
+    
+    <h2>Cuestionario de selección múltiple</h2>
+    
+    <div id="quiz"></div>
+
+    <h2>Puntos clave del artículo</h2>
+    
+    <div class="key-points">
+        <ul>
+            <li>La innovación en la captura de valor es tan importante como la innovación en la creación de valor.</li>
+            <li>Existen cinco categorías principales de innovación en la captura de valor: cambiar el mecanismo de fijación de precios, cambiar el pagador, cambiar el portador del precio, cambiar el momento y cambiar el segmento.</li>
+            <li>Las empresas deben equilibrar sus esfuerzos entre la creación y la captura de valor para maximizar sus beneficios.</li>
+            <li>La captura de valor va más allá de la simple fijación de precios; implica consideraciones más fundamentales con mayores implicaciones estratégicas.</li>
+            <li>Las innovaciones en la captura de valor pueden incluir estrategias como precios basados en el valor, subastas, modelos de mercado de dos caras, cambios en el portador del precio, y segmentación del mercado.</li>
+            <li>Ejemplos exitosos de innovación en la captura de valor incluyen Netflix (modelo de suscripción), Google AdWords (subastas), Nespresso (cambio del portador del precio) y Gillette (precios de base instalada).</li>
+            <li>Para innovar en la captura de valor, las empresas deben formar equipos multifuncionales dedicados y fomentar la generación de ideas en toda la organización.</li>
+            <li>La innovación en la captura de valor puede llevar a aumentos significativos en los márgenes de beneficio y la competitividad de una empresa.</li>
+        </ul>
+    </div>
+
+    <script>
+        const quizData = [
+            {
+                question: "1. ¿Cuál es el principal argumento del artículo 'Capture More Value'?",
+                options: [
+                    "La innovación en la creación de valor es más importante que la captura de valor",
+                    "Las empresas deben enfocarse igualmente en la innovación para la creación y la captura de valor",
+                    "La captura de valor es más importante que la creación de valor",
+                    "Las empresas solo deben preocuparse por la captura de valor"
+                ],
+                correct: 1
+            },
+            {
+                question: "2. ¿Qué innovó Vestergaard con su producto LifeStraw?",
+                options: [
+                    "Solo en la creación de valor",
+                    "Solo en la captura de valor",
+                    "Tanto en la creación como en la captura de valor",
+                    "Ni en la creación ni en la captura de valor"
+                ],
+                correct: 2
+            },
+            {
+                question: "3. ¿Cuál de las siguientes NO es una de las cinco categorías de innovación en la captura de valor mencionadas en el artículo?",
+                options: [
+                    "Cambiar el mecanismo de fijación de precios",
+                    "Cambiar el pagador",
+                    "Cambiar el portador del precio",
+                    "Cambiar la cadena de suministro"
+                ],
+                correct: 3
+            },
+            {
+                question: "4. ¿Qué innovación en la captura de valor implementó Netflix que fue crucial para superar a Blockbuster?",
+                options: [
+                    "Precios basados en el valor",
+                    "Modelo de suscripción",
+                    "Subastas",
+                    "Precios impulsados por la demanda"
+                ],
+                correct: 1
+            },
+            {
+                question: "5. ¿Qué estrategia de captura de valor utiliza Google para sus anuncios en las páginas de resultados de búsqueda?",
+                options: [
+                    "Precios basados en el valor",
+                    "Modelo de suscripción",
+                    "Subastas",
+                    "Precios impulsados por la demanda"
+                ],
+                correct: 2
+            },
+            {
+                question: "6. ¿Qué innovación en la captura de valor implementó el periódico suizo 20 Minuten?",
+                options: [
+                    "Cambiar el pagador (modelo de mercado de dos caras)",
+                    "Precios basados en el valor",
+                    "Subastas",
+                    "Contratación de futuros"
+                ],
+                correct: 0
+            },
+            {
+                question: "7. ¿Qué estrategia de captura de valor utilizó Nespresso para vender café a un precio mucho más alto?",
+                options: [
+                    "Cambiar el pagador",
+                    "Cambiar el portador del precio",
+                    "Precios basados en el valor",
+                    "Subastas"
+                ],
+                correct: 1
+            },
+            {
+                question: "8. ¿Qué modelo de captura de valor utiliza Gillette con sus productos de afeitado?",
+                options: [
+                    "Precios de base instalada",
+                    "Subastas",
+                    "Pague lo que quiera",
+                    "Contratación de futuros"
+                ],
+                correct: 0
+            },
+            {
+                question: "9. ¿Qué estrategia utilizó Dow Corning para capturar valor en un nuevo segmento de mercado con su marca Xiameter?",
+                options: [
+                    "Precios basados en el valor",
+                    "Subastas",
+                    "Coste objetivo",
+                    "Pague lo que quiera"
+                ],
+                correct: 2
+            },
+            {
+                question: "10. ¿Qué ejemplo se da en el artículo de una 'valla de autosegmentación'?",
+                options: [
+                    "Subastas",
+                    "Cupones de supermercado",
+                    "Precios de base instalada",
+                    "Contratación de futuros"
+                ],
+                correct: 1
+            }
+        ];
+
+        const quizContainer = document.getElementById('quiz');
+
+        quizData.forEach((q, index) => {
+            const questionDiv = document.createElement('div');
+            questionDiv.className = 'question';
+            questionDiv.innerHTML = `
+                <p>${q.question}</p>
+                <div class="options">
+                    ${q.options.map((option, i) => `
+                        <div class="option">
+                            <input type="radio" id="q${index}_${i}" name="q${index}" value="${i}">
+                            <label for="q${index}_${i}">${option}</label>
+                        </div>
+                    `).join('')}
+                </div>
+                <button onclick="checkAnswer(${index})">Comprobar respuesta</button>
+            `;
+            quizContainer.appendChild(questionDiv);
+        });
+
+        function checkAnswer(questionIndex) {
+            const selectedOption = document.querySelector(`input[name="q${questionIndex}"]:checked`);
+            if (!selectedOption) return;
+
+            const options = document.querySelectorAll(`input[name="q${questionIndex}"]`);
+            options.forEach((option, index) => {
+                const label = option.nextElementSibling;
+                if (index === quizData[questionIndex].correct) {
+                    label.classList.add('correct');
+                } else if (index === parseInt(selectedOption.value)) {
+                    label.classList.add('incorrect');
+                }
+                option.disabled = true;
+            });
+        }
+    </script>
+</body>
+</html>
